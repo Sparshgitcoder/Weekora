@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Weekora — Make room for a weekend{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">A little escape. A lot to remember.</div>
+        <h1 class="hero-title">Your weekend,<br><em>somewhere new.</em></h1>
+        <p class="hero-subtitle">A place to discover weekend getaways from independent trip organisers. Mountains, campfires and new company — find your kind of escape.</p>
+        <div class="hero-actions">
+            <a href="{{ url_for('trips') }}" class="btn-primary">Explore trips</a>
+            <a href="{{ url_for('add_trip') }}" class="btn-ghost">List a trip</a>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="mock-card">
+            <div class="trip-art" aria-hidden="true"><span>OUT OF OFFICE.<br>INTO THE HILLS.</span></div>
+            <p class="mock-label">Illustrative listing · not bookable</p>
+            <h2 class="feature-title">A weekend in the mountains</h2>
+            <p class="feature-body">Rishikesh · 2 days / 1 night<br>Departs from Delhi · By Demo Trails</p>
+            <div class="trip-price"><strong>₹3,999</strong><span> / person · sample price</span></div>
+        </div>
+    </div>
+</section>
+<section class="features">
+    <div class="features-inner">
+        <article class="feature-card"><div class="feature-icon">01</div><h2 class="feature-title">Find your escape</h2><p class="feature-body">The idea: browse trips by destination, departure city and the weekend you have free.</p></article>
+        <article class="feature-card"><div class="feature-icon">02</div><h2 class="feature-title">Know the plan</h2><p class="feature-body">Bring the itinerary, price and organiser information together so travellers can decide.</p></article>
+        <article class="feature-card"><div class="feature-icon">03</div><h2 class="feature-title">Bring people along</h2><p class="feature-body">Give independent organisers a home for their trips and a way to reach new travellers.</p></article>
+    </div>
+</section>
+<section class="cta-section"><div class="cta-inner"><h2 class="cta-title">You plan the trip.<br>They find their next story.</h2><p class="cta-body">Building a weekend travel community, one organiser at a time.</p><a href="{{ url_for('register') }}" class="btn-primary">Get started</a></div></section>
+{% endblock %}
