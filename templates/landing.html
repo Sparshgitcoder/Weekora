@@ -1,32 +1,62 @@
 {% extends "base.html" %}
 {% block title %}Weekora — Make room for a weekend{% endblock %}
+{% block nav_links %}
+<a href="{{ url_for('add_trip') }}" class="nav-action">List your trip <span aria-hidden="true">↗</span></a>
+{% endblock %}
 {% block content %}
 <section class="hero">
-    <div class="hero-inner">
-        <div class="hero-badge">A little escape. A lot to remember.</div>
-        <h1 class="hero-title">Your weekend,<br><em>somewhere new.</em></h1>
-        <p class="hero-subtitle">A place to discover weekend getaways from independent trip organisers. Mountains, campfires and new company — find your kind of escape.</p>
-        <div class="hero-actions">
-            <a href="{{ url_for('trips') }}" class="btn-primary">Explore trips</a>
-            <a href="{{ url_for('add_trip') }}" class="btn-ghost">List a trip</a>
+    <p class="hero-eyebrow">A little escape. A lot to remember.</p>
+    <h1 class="hero-title">Your weekend, <em>somewhere new.</em></h1>
+    <p class="hero-subtitle">Discover weekend getaways from independent travel organisers. Find your next escape, all in one place.</p>
+    <a href="#trips" class="hero-scroll-link"><span aria-hidden="true">↓</span> Explore upcoming trips below</a>
+</section>
+
+<section class="trips-section" id="trips" aria-labelledby="trips-title">
+    <div class="trips-inner">
+        <div class="trips-header">
+            <div>
+                <h2 class="trips-title" id="trips-title">Upcoming escapes</h2>
+                <p class="trips-subtitle">Find a trip that fits your weekend.</p>
+            </div>
+            <span class="trips-count" data-trip-count>{{ trips|length }} trips</span>
         </div>
-    </div>
-    <div class="hero-visual">
-        <div class="mock-card">
-            <div class="trip-art" aria-hidden="true"><span>OUT OF OFFICE.<br>INTO THE HILLS.</span></div>
-            <p class="mock-label">Illustrative listing · not bookable</p>
-            <h2 class="feature-title">A weekend in the mountains</h2>
-            <p class="feature-body">Rishikesh · 2 days / 1 night<br>Departs from Delhi · By Demo Trails</p>
-            <div class="trip-price"><strong>₹3,999</strong><span> / person · sample price</span></div>
+
+        <div class="trip-filters" role="group" aria-label="Filter trips by type">
+            {% for value, label in filters %}
+            <button type="button" class="trip-filter{% if loop.first %} is-active{% endif %}" data-filter="{{ value }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ label }}</button>
+            {% endfor %}
         </div>
+
+        <div class="trip-grid">
+            {% for trip in trips %}
+            <a href="{{ url_for('trip_detail', id=trip.id) }}" class="trip-card" data-category="{{ trip.category }}">
+                {% if trip.image %}
+                <img class="trip-photo" src="{{ url_for('static', filename=trip.image) }}" alt="{{ trip.destination }}" loading="lazy">
+                {% else %}
+                <div class="trip-photo trip-art trip-art-{{ trip.category }}" aria-hidden="true"><span>{{ trip.destination }}</span></div>
+                {% endif %}
+                <div class="trip-body">
+                    <p class="trip-meta">{{ trip.date }} · {{ trip.duration }}</p>
+                    <h3 class="trip-name">{{ trip.title }}</h3>
+                    <p class="trip-from">From {{ trip.departs }}</p>
+                    <p class="trip-price"><strong>₹{{ "{:,}".format(trip.price_inr) }}</strong><span> / person</span></p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <p class="trips-empty" data-trips-empty hidden>No trips of this type yet. Try another filter.</p>
+        <p class="trips-note">Illustrative trips, dates and prices for the design preview.</p>
     </div>
 </section>
-<section class="features">
-    <div class="features-inner">
-        <article class="feature-card"><div class="feature-icon">01</div><h2 class="feature-title">Find your escape</h2><p class="feature-body">The idea: browse trips by destination, departure city and the weekend you have free.</p></article>
-        <article class="feature-card"><div class="feature-icon">02</div><h2 class="feature-title">Know the plan</h2><p class="feature-body">Bring the itinerary, price and organiser information together so travellers can decide.</p></article>
-        <article class="feature-card"><div class="feature-icon">03</div><h2 class="feature-title">Bring people along</h2><p class="feature-body">Give independent organisers a home for their trips and a way to reach new travellers.</p></article>
+
+<section class="cta-section">
+    <div class="cta-inner">
+        <h2 class="cta-title">You plan the trip. We bring the travellers.</h2>
+        <p class="cta-body">An easier way for independent organisers to showcase trips and reach new people.</p>
+        <a href="{{ url_for('add_trip') }}" class="btn-primary btn-pill">List your trip <span aria-hidden="true">↗</span></a>
     </div>
 </section>
-<section class="cta-section"><div class="cta-inner"><h2 class="cta-title">You plan the trip.<br>They find their next story.</h2><p class="cta-body">Building a weekend travel community, one organiser at a time.</p><a href="{{ url_for('register') }}" class="btn-primary">Get started</a></div></section>
+
+<a href="#trips" class="scroll-cue" data-scroll-cue aria-label="Scroll to upcoming trips"><span aria-hidden="true">↓</span></a>
 {% endblock %}

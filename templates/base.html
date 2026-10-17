@@ -19,8 +19,10 @@
                 <span class="brand-name">Weekora</span>
             </a>
             <div class="nav-links">
+                {% block nav_links %}
                 <a href="{{ url_for('login') }}">Sign in</a>
                 <a href="{{ url_for('register') }}" class="nav-cta">Get started</a>
+                {% endblock %}
             </div>
         </div>
     </nav>
@@ -34,6 +36,10 @@
             <span class="brand-icon">◈</span>
             <span class="footer-name">Weekora</span>
             <p class="footer-copy">Make room for a weekend.</p>
+            <p>
+                <a href="{{ url_for('terms') }}">Terms &amp; Conditions</a> ·
+                <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+            </p>
         </div>
     </footer>
 

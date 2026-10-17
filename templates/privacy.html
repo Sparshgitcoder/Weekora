@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Privacy Policy — Weekora{% endblock %}
+{% block content %}
+<section class="legal-section">
+    <header class="legal-header">
+        <p class="hero-eyebrow">Legal</p>
+        <h1 class="legal-title">Privacy <em>Policy</em></h1>
+        <p class="legal-updated">Last updated: 17 October 2026</p>
+    </header>
+
+    <article class="legal-card">
+        <p class="legal-note">This is a general template for the Weekora learning project. Have it reviewed by a qualified legal professional before real users rely on it.</p>
+
+        <p>Your privacy matters to us. This policy explains what information Weekora collects, how we use it and the choices you have.</p>
+
+        <h2>1. Information we collect</h2>
+        <ul>
+            <li><strong>Account details:</strong> your name, email address, password (stored securely, never in plain text) and whether you are a traveller or an organiser.</li>
+            <li><strong>Trip listings:</strong> for organisers, the trip details you publish, such as destinations, dates, prices and descriptions.</li>
+            <li><strong>Usage information:</strong> basic technical data such as your browser type and the pages you visit, used to keep the site working.</li>
+        </ul>
+
+        <h2>2. How we use your information</h2>
+        <ul>
+            <li>To create and manage your account and keep you signed in.</li>
+            <li>To show trip listings and connect travellers with organisers.</li>
+            <li>To keep Weekora safe, prevent misuse and fix problems.</li>
+            <li>To contact you about your account or important changes to the service.</li>
+        </ul>
+
+        <h2>3. When we share information</h2>
+        <p>We do not sell your personal information. We share it only:</p>
+        <ul>
+            <li>with an organiser when you choose to enquire about or join their trip;</li>
+            <li>with service providers who help us run the website, under confidentiality obligations;</li>
+            <li>when required by law or to protect the safety of our users.</li>
+        </ul>
+
+        <h2>4. Cookies</h2>
+        <p>We use essential cookies to keep you signed in and to remember basic preferences. We do not use advertising cookies.</p>
+
+        <h2>5. How long we keep information</h2>
+        <p>We keep your information while your account is active. If you delete your account, we remove your personal information unless we need to keep some of it to meet legal obligations.</p>
+
+        <h2>6. Your choices and rights</h2>
+        <p>You can ask to access, correct or delete your personal information, in line with applicable data protection laws, including India's Digital Personal Data Protection Act, 2023.</p>
+
+        <h2>7. Security</h2>
+        <p>We take reasonable steps to protect your information, including secure password storage. No online service can guarantee complete security, so please use a strong, unique password.</p>
+
+        <h2>8. Children</h2>
+        <p>Weekora is meant for people aged 18 and over. We do not knowingly collect information from children.</p>
+
+        <h2>9. Changes to this policy</h2>
+        <p>We may update this policy as Weekora grows. When we make significant changes, we will update the date at the top of this page.</p>
+
+        <h2>10. Contact</h2>
+        <p>Questions about your privacy? Contact details will be added here before launch.</p>
+    </article>
+
+    <p class="legal-switch">Also read our <a href="{{ url_for('terms') }}">Terms &amp; Conditions</a>.</p>
+</section>
+{% endblock %}
