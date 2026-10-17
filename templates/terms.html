@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Terms & Conditions — Weekora{% endblock %}
+{% block content %}
+<section class="legal-section">
+    <header class="legal-header">
+        <p class="hero-eyebrow">Legal</p>
+        <h1 class="legal-title">Terms &amp; <em>Conditions</em></h1>
+        <p class="legal-updated">Last updated: 17 October 2026</p>
+    </header>
+
+    <article class="legal-card">
+        <p class="legal-note">This is a general template for the Weekora learning project. Have it reviewed by a qualified legal professional before real users rely on it.</p>
+
+        <p>Welcome to Weekora. These terms explain how you can use our website to discover and list weekend trips. By creating an account or using Weekora, you agree to these terms.</p>
+
+        <h2>1. What Weekora is</h2>
+        <p>Weekora is a marketplace that connects travellers with independent trip organisers. Weekora does not run trips itself. Each trip is planned, priced and operated by the organiser who lists it, and your arrangement for that trip is with the organiser.</p>
+
+        <h2>2. Your account</h2>
+        <ul>
+            <li>You must be at least 18 years old to create an account.</li>
+            <li>Give accurate information and keep it up to date.</li>
+            <li>Keep your password private. You are responsible for activity on your account.</li>
+            <li>Choose the right role: traveller to discover trips, or organiser to list them.</li>
+        </ul>
+
+        <h2>3. For travellers</h2>
+        <ul>
+            <li>Read the itinerary, price, inclusions and organiser details before you commit to a trip.</li>
+            <li>Follow the organiser's safety instructions and local laws during the trip.</li>
+            <li>Cancellations, refunds and changes follow the policy set by the organiser for that trip.</li>
+        </ul>
+
+        <h2>4. For organisers</h2>
+        <ul>
+            <li>List only trips you are able and authorised to run, with accurate dates, prices and itineraries.</li>
+            <li>Hold any licences, permits and insurance your trips need.</li>
+            <li>State clearly what the price includes and your cancellation and refund policy.</li>
+            <li>Respond to travellers honestly and keep the trip details on Weekora current.</li>
+        </ul>
+
+        <h2>5. Listings and content</h2>
+        <p>You keep ownership of the photos and descriptions you post, and you allow Weekora to display them on the platform. Do not post content that is false, misleading, offensive or that you do not have the right to use. We may remove listings or content that break these terms.</p>
+
+        <h2>6. Prices and payments</h2>
+        <p>Prices are shown in Indian rupees (₹) per person unless stated otherwise and are set by organisers. Weekora does not currently process bookings or payments. If this changes, we will update these terms before it applies to you.</p>
+
+        <h2>7. Limitation of liability</h2>
+        <p>Weekora provides the platform "as is". We are not responsible for the conduct of organisers or travellers, or for the quality, safety or legality of any trip. To the extent the law allows, Weekora is not liable for losses arising from trips arranged through the platform.</p>
+
+        <h2>8. Suspending or closing accounts</h2>
+        <p>You can stop using Weekora at any time. We may suspend or close accounts that break these terms or put other users at risk.</p>
+
+        <h2>9. Changes to these terms</h2>
+        <p>We may update these terms as Weekora grows. When we make significant changes, we will update the date at the top of this page.</p>
+
+        <h2>10. Contact</h2>
+        <p>Questions about these terms? Contact details will be added here before launch.</p>
+    </article>
+
+    <p class="legal-switch">Also read our <a href="{{ url_for('privacy') }}">Privacy Policy</a>.</p>
+</section>
+{% endblock %}

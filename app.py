@@ -1,11 +1,39 @@
+import os
+
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
+# Illustrative trips for the landing page design preview. Replace with a
+# query on the trips table once database/db.py is implemented.
+SAMPLE_TRIPS = [
+    {"id": 1, "slug": "dharamshala", "title": "Dharamshala Escape", "destination": "Dharamshala", "date": "6 Nov", "duration": "3D/2N", "departs": "Delhi", "price_inr": 5999, "category": "mountains"},
+    {"id": 2, "slug": "rishikesh", "title": "Rishikesh Adventure", "destination": "Rishikesh", "date": "13 Nov", "duration": "2D/1N", "departs": "Delhi", "price_inr": 3999, "category": "adventure"},
+    {"id": 3, "slug": "kasol", "title": "Kasol Weekend", "destination": "Kasol", "date": "20 Nov", "duration": "3D/2N", "departs": "Delhi", "price_inr": 4999, "category": "mountains"},
+    {"id": 4, "slug": "jibhi", "title": "Jibhi Getaway", "destination": "Jibhi", "date": "27 Nov", "duration": "3D/2N", "departs": "Delhi", "price_inr": 5499, "category": "relax"},
+    {"id": 5, "slug": "bir-billing", "title": "Bir Billing Paragliding", "destination": "Bir Billing", "date": "4 Dec", "duration": "3D/2N", "departs": "Delhi", "price_inr": 6499, "category": "adventure"},
+    {"id": 6, "slug": "coorg", "title": "Coorg Coffee Trails", "destination": "Coorg", "date": "11 Dec", "duration": "3D/2N", "departs": "Bangalore", "price_inr": 6999, "category": "relax"},
+]
+
+TRIP_FILTERS = [
+    ("all", "All trips"),
+    ("mountains", "Mountains"),
+    ("adventure", "Adventure"),
+    ("relax", "Relax & unwind"),
+]
+
+
+def trip_image(slug):
+    # Drop a photo at static/images/trips/<slug>.jpg and the card uses it.
+    filename = f"images/trips/{slug}.jpg"
+    return filename if os.path.exists(os.path.join(app.static_folder, filename)) else None
+
+
 @app.route("/")
 def landing():
-    return render_template("landing.html")
+    trips = [dict(trip, image=trip_image(trip["slug"])) for trip in SAMPLE_TRIPS]
+    return render_template("landing.html", trips=trips, filters=TRIP_FILTERS)
 
 
 # Form screens only. Implement account creation and sessions as you learn.
@@ -19,6 +47,16 @@ def register():
 def login():
     message = "Sign-in is a future lesson. No session has been created." if request.method == "POST" else None
     return render_template("login.html", error=message)
+
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
+
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
 
 
 def coming_soon(title, description):
